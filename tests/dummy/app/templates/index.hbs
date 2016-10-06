@@ -1,0 +1,348 @@
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Component's options</h3>
+      <table class="table-striped table-bordered table-condensed table">
+        <thead>
+          <tr>
+            <td>Option</td>
+            <td>Type</td>
+            <td>Default value</td>
+            <td>Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>data</code></td>
+            <td>Ember.Object[]</td>
+            <td><pre>[]</pre></td>
+            <td><p>All table records</p></td>
+          </tr>
+          <tr>
+            <td><code>columns</code></td>
+            <td>Object[]</td>
+            <td><pre>[]</pre></td>
+            <td>
+              <p>All table columns</p>
+              <p>Each column may have such fields:</p>
+              <table class="table table-condensed table-column-options">
+                <tbody>
+                  <tr>
+                    <td><code>propertyName</code></td>
+                    <td>String</td>
+                    <td><p>Field-name of the data's object shown in the current column. If it isn't provided, sorting and filtering options for current column are ignored</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>title</code></td>
+                    <td>String</td>
+                    <td><p>Header for column. If it isn't provided, capitalized <code>propertyName</code> is used</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>template</code></td>
+                    <td>String</td>
+                    <td><p>Custom template for each cell in the current column</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>sortedBy</code></td>
+                    <td>String</td>
+                    <td><p>Field-name for sorting by current column. If it isn't provided, <code>propertyName</code> is used</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>disableSorting</code></td>
+                    <td>Boolean</td>
+                    <td><p>If this is true, sorting will be disabled for this column.</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>sortDirection</code></td>
+                    <td>String</td>
+                    <td><p>The default sorting for this column. Can be either <code>asc</code> or <code>desc</code>. Needs to be set in conjunction with <code>sortPrecedence</code>,
+                    otherwise it will not have any effect.</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>sortPrecedence</code></td>
+                    <td>Number</td>
+                    <td><p>If this is bigger than -1, this column will be sorted by default by the specified <code>sortDirection</code>.</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>isHidden</code></td>
+                    <td>Boolean</td>
+                    <td><p>Is current column hidden by default</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>mayBeHidden</code></td>
+                    <td>Boolean</td>
+                    <td><p>Is current column me be hidden. This field determines, if column appears in the columns-dropdown. If <code>mayBeHidden</code> is <code>true</code> and <code>isHidden</code> is also <code>true</code> for current column, this column always be hidden</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>disableFiltering</code></td>
+                    <td>Boolean</td>
+                    <td><p>If this is true, filtering will be disabled for this column.</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>filteredBy</code></td>
+                    <td>String</td>
+                    <td><p>Custom data's property that is used to filter column. If it isn't provided, <code>propertyName</code> is used</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>filterString</code></td>
+                    <td>String</td>
+                    <td><p>This will be set as default filter value for this column.</p></td>
+                  </tr>
+                  <tr>
+                    <td><code>filterWithSelect</code></td>
+                    <td>Boolean</td>
+                    <td><p>If <code>true</code> select-dropdown will be used for filtering by current column. Options are unique values for <code>data.@each.${propertyName}</code></p></td>
+                  </tr>
+                  <tr>
+                    <td><code>predefinedFilterOptions</code></td>
+                    <td>String[]</td>
+                    <td><p>List of predefined options for select-dropdown. Used if <code>filterWithSelect</code> is <code>true</code>. It isn't overrode with <code>data.@each.${propertyName}</code></p></td>
+                  </tr>
+                  <tr>
+                    <td><code>className</code></td>
+                    <td>String</td>
+                    <td>Custom class-name for cells in the current column</td>
+                  </tr>
+                  <tr>
+                    <td><code>filterFunction</code></td>
+                    <td>Function</td>
+                    <td>Custom function used to filter rows (used if <code>filterWithSelect</code> is false)</td>
+                  </tr>
+                  <tr>
+                    <td><code>filterPlaceholder</code></td>
+                    <td>String</td>
+                    <td>Placeholder for filter-input</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td><code>groupedHeaders</code></td>
+            <td>Object[][]</td>
+            <td><pre>[]</pre></td>
+            <td>
+              <p>List of the additional headers. Used to group columns</p>
+              <p>Each object may have such fields:</p>
+              <table class="table table-condensed table-column-options">
+                <tbody>
+                <tr>
+                  <td><code>title</code></td>
+                  <td>String</td>
+                  <td>Header for grouped column</td>
+                </tr>
+                <tr>
+                  <td><code>colspan</code></td>
+                  <td>Number</td>
+                  <td>HTML colspan attr</td>
+                </tr>
+                <tr>
+                  <td><code>rowspan</code></td>
+                  <td>Number</td>
+                  <td>HTML rowspan attr</td>
+                </tr>
+                </tbody>
+              </table>
+              <p class="alert alert-danger"><strong>IMPORTANT</strong> <code>showColumnsDropdown</code> should be <code>false</code> to avoid markup breaking when some column becomes shown/hidden.</p>
+            </td>
+          </tr>
+          <tr>
+            <td><code>multipleColumnsSorting</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.multipleColumnsSorting}}</pre></td>
+            <td><p>Determines if multi-columns sorting should be used</p></td>
+          </tr>
+          <tr>
+            <td><code>useNumericPagination</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.useNumericPagination}}</pre></td>
+            <td><p>Determines if numeric pagination should be used</p></td>
+          </tr>
+          <tr>
+            <td><code>showTableFooter</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.showTableFooter}}</pre></td>
+            <td><p>Determines if table footer should be shown on the page</p></td>
+          </tr>
+          <tr>
+            <td><code>pageSize</code></td>
+            <td>Number</td>
+            <td><pre>{{c.pageSize}}</pre></td>
+            <td>Number of records shown on one table-page (size of the <code>visibleContent</code>)</td>
+          </tr>
+          <tr>
+            <td><code>showColumnsDropdown</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.showColumnsDropdown}}</pre></td>
+            <td><p>Determines if columns-dropdown should be shown</p></td>
+          </tr>
+          <tr>
+            <td><code>useFilteringByColumns</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.useFilteringByColumns}}</pre></td>
+            <td><p>Determines if filtering by columns should be available to the user</p></td>
+          </tr>
+          <tr>
+            <td><code>filteringIgnoreCase</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.filteringIgnoreCase}}</pre></td>
+            <td><p>Determines if filtering (global and by column) should ignore case</p></td>
+          </tr>
+          <tr>
+            <td><code>showGlobalFilter</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.showGlobalFilter}}</pre></td>
+            <td><p>Determines if "Global filter"-field should be shown</p></td>
+          </tr>
+          <tr>
+            <td><code>focusGlobalFilter</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.focusGlobalFilter}}</pre></td>
+            <td><p>Determines if focus should be on the "Global filter"-field on component render</p></td>
+          </tr>
+          <tr>
+            <td><code>doFilteringByHiddenColumns</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.doFilteringByHiddenColumns}}</pre></td>
+            <td><p>Determines if filtering should be done by hidden columns</p><p class="alert alert-info">Notice: after changing this value filtering results will be updated only after filter options are changed</p></td>
+          </tr>
+          <tr>
+            <td><code>displayDataChangedAction</code></td>
+            <td>String</td>
+            <td><pre>{{c.displayDataChangedAction}}</pre></td>
+            <td><p>Action-name sent on user interaction. The action will receive the current settings of the table as parameter.</p></td>
+          </tr>
+          <tr>
+            <td><code>sendDisplayDataChangedAction</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.sendDisplayDataChangedAction}}</pre></td>
+            <td><p>Determines if action on user interaction should be sent</p></td>
+          </tr>
+          <tr>
+            <td><code>columnsVisibilityChangedAction</code></td>
+            <td>String</td>
+            <td><pre>{{c.columnsVisibilityChangedAction}}</pre></td>
+            <td><p>Action-name sent on change of visible columns. The action will receive an array of objects as parameter, where every object looks like this: <code>{ propertyName: 'firstName', isHidden: true, mayBeHidden: false }</code>.</p></td>
+          </tr>
+          <tr>
+            <td><code>sendColumnsVisibilityChangedAction</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.sendColumnsVisibilityChangedAction}}</pre></td>
+            <td><p>Determines if action on change of visible columns should be sent</p></td>
+          </tr>
+          <tr>
+            <td><code>columnsAreUpdateable</code></td>
+            <td>Boolean</td>
+            <td><pre>{{c.columnsAreUpdateable}}</pre></td>
+            <td><p>Determines if <code>processedColumns</code> will be updated if <code>columns</code> are changed (<code>propertyName</code> and <code>template</code> are observed).</p><p class="alert alert-danger"><strong>IMPORTANT</strong> All filter, sort and visibility options will be dropped to the default values while updating.</p></td>
+          </tr>
+          <tr>
+            <td><code>columnFieldsToCheckUpdate</code></td>
+            <td>String[]</td>
+            <td><pre>{{c.columnFieldsToCheckUpdate}}</pre></td>
+            <td><p><code>columns</code>-fields which are observed to update shown table-columns. It is used only if <code>columnsAreUpdateable</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>simplePaginationTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.simplePaginationTemplate}}</pre></td>
+            <td><p>Path to the custom template with pagination. Ignored if <code>useNumericPagination</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>numericPaginationTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.numericPaginationTemplate}}</pre></td>
+            <td><p>Path to the custom template with numeric pagination. Used if <code>useNumericPagination</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>tableFooterTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.tableFooterTemplate}}</pre></td>
+            <td><p>Path to the custom template with table footer. Used if <code>showTableFooter</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>pageSizeTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.pageSizeTemplate}}</pre></td>
+            <td><p>Path to the custom template for page size</p></td>
+          </tr>
+          <tr>
+            <td><code>showPageSize</code></td>
+            <td>Boolean</td>
+            <td><p>Determines if page size should be shown</p></td>
+          </tr>
+          <tr>
+            <td><code>globalFilterTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.globalFilterTemplate}}</pre></td>
+            <td><p>Path to the custom template with global filter. Used if <code>showGlobalFilter</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>columnsDropdownTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.columnsDropdownTemplate}}</pre></td>
+            <td><p>Path to the custom template with columns dropdown. Used if <code>showColumnsDropdown</code> is <code>true</code></p></td>
+          </tr>
+          <tr>
+            <td><code>rowTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.rowTemplate}}</pre></td>
+            <td><p>Path to the custom template with table's row</p></td>
+          </tr>
+          <tr>
+            <td><code>headerSortingRowTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.headerSortingRowTemplate}}</pre></td>
+            <td><p>Path to the custom template with header row for column names</p></td>
+          </tr>
+          <tr>
+            <td><code>headerSortingIconsTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.headerSortingIconsTemplate}}</pre></td>
+            <td><p>Path to the custom template for sorting icons</p></td>
+          </tr>
+          <tr>
+            <td><code>headerFilteringRowTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.headerFilteringRowTemplate}}</pre></td>
+            <td><p>Path to the custom template with header row for column filters</p></td>
+          </tr>
+          <tr>
+            <td><code>headerGroupedRowsTemplate</code></td>
+            <td>String</td>
+            <td><pre>{{c.headerGroupedRowsTemplate}}</pre></td>
+            <td><p>Path to the custom template with header rows for columns grouping</p></td>
+          </tr>
+          <tr>
+            <td><code>customMessages</code></td>
+            <td>Object</td>
+            <td><pre>{}</pre></td>
+            <td>
+              <p>Overrides for messages used in the component. Defaults:</p>
+              <pre><code class="javascript">{{to-string c 'messages'}}</code></pre>
+            </td>
+          </tr>
+          <tr>
+            <td><code>customIcons</code></td>
+            <td>Object</td>
+            <td><pre>{}</pre></td>
+            <td>
+              <p>Overrides for icons-classes used in the component. Defaults:</p>
+              <pre><code class="javascript">{{to-string c 'icons'}}</code></pre>
+            </td>
+          </tr>
+          <tr>
+            <td><code>customClasses</code></td>
+            <td>Object</td>
+            <td><pre>{}</pre></td>
+            <td>
+              <p>Overrides for css-classes (excluding <code>icons</code>) used in the component. Defaults:</p>
+              <pre><code class="javascript">{{to-string c 'classes'}}</code></pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{{outlet}}
