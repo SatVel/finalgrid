@@ -1,0 +1,21 @@
+<tr>
+  {{#each processedColumns as |column|}}
+    {{#if column.isVisible}}
+      <th class="{{classes.theadCell}} {{unless column.useFilter classes.theadCellNoFiltering}}">
+        {{#if column.useFilter}}
+          {{#if column.filterWithSelect}}
+            {{#x-select class=(concat column.cssPropertyName " form-control changeFilterForColumn") value=column.filterString as |xs|}}
+              {{#each column.filterOptions key="@index" as |filterOption|}}
+                {{#xs.option value=filterOption}}{{filterOption}}{{/xs.option}}
+              {{/each}}
+            {{/x-select}}
+          {{else}}
+            {{input type="text" value=column.filterString class="form-control" enter="" placeholder=column.filterPlaceholder}}
+          {{/if}}
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </th>
+    {{/if}}
+  {{/each}}
+</tr>
